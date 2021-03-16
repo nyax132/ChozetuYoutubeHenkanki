@@ -1506,16 +1506,6 @@ namespace youtubedown2
             }
         }
 
-        private void Musicfile_CheckedChanged(object sender, EventArgs e)
-        {
-            insuutextbox.Text = "youtube-dl -x --audio-format --newline";
-        }
-
-        private void Moviefile_CheckedChanged(object sender, EventArgs e)
-        {
-            insuutextbox.Text = "youtube-dl -f bestvideo[ext=mp4]+bestaudio[ext=m4a] --merge-output --newline";
-        }
-
         private void urlinput_TextChanged(object sender, EventArgs e)
         {
             String inputtest = urlinput.Text;
@@ -1664,7 +1654,6 @@ namespace youtubedown2
         {
             Logic logic = new Logic();
             logic.DLupdate();
-
         }
 
         private void iToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1687,6 +1676,12 @@ namespace youtubedown2
             {
                 TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
             }
+        }
+        private void cmdbutton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("コマンドプロンプト起動");
+            Logic logic = new Logic();
+            logic.Cmd();
         }
     }
 }

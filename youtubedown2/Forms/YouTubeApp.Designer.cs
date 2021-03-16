@@ -46,7 +46,7 @@
             this.henkan = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.syousaigb = new System.Windows.Forms.GroupBox();
-            this.insuutextbox = new System.Windows.Forms.TextBox();
+            this.cmdbutton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tate = new System.Windows.Forms.Label();
@@ -233,7 +233,7 @@
             // 
             // syousaigb
             // 
-            this.syousaigb.Controls.Add(this.insuutextbox);
+            this.syousaigb.Controls.Add(this.cmdbutton);
             this.syousaigb.Controls.Add(this.label5);
             this.syousaigb.Controls.Add(this.label4);
             this.syousaigb.Controls.Add(this.tate);
@@ -248,13 +248,15 @@
             this.syousaigb.TabStop = false;
             this.syousaigb.Text = "詳細設定";
             // 
-            // insuutextbox
+            // cmdbutton
             // 
-            this.insuutextbox.Location = new System.Drawing.Point(294, 52);
-            this.insuutextbox.Name = "insuutextbox";
-            this.insuutextbox.ReadOnly = true;
-            this.insuutextbox.Size = new System.Drawing.Size(294, 25);
-            this.insuutextbox.TabIndex = 7;
+            this.cmdbutton.Location = new System.Drawing.Point(318, 51);
+            this.cmdbutton.Name = "cmdbutton";
+            this.cmdbutton.Size = new System.Drawing.Size(126, 27);
+            this.cmdbutton.TabIndex = 7;
+            this.cmdbutton.Text = "コマンドプロンプト";
+            this.cmdbutton.UseVisualStyleBackColor = true;
+            this.cmdbutton.Click += new System.EventHandler(this.cmdbutton_Click);
             // 
             // label5
             // 
@@ -270,9 +272,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(244, 55);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 18);
+            this.label4.Size = new System.Drawing.Size(68, 18);
             this.label4.TabIndex = 5;
-            this.label4.Text = "※引数";
+            this.label4.Text = "手動で入力";
             // 
             // tate
             // 
@@ -309,7 +311,6 @@
             this.Moviefile.TabStop = true;
             this.Moviefile.Text = "動画ファイル";
             this.Moviefile.UseVisualStyleBackColor = true;
-            this.Moviefile.CheckedChanged += new System.EventHandler(this.Moviefile_CheckedChanged);
             // 
             // Musicfile
             // 
@@ -321,7 +322,6 @@
             this.Musicfile.TabStop = true;
             this.Musicfile.Text = "音声ファイル";
             this.Musicfile.UseVisualStyleBackColor = true;
-            this.Musicfile.CheckedChanged += new System.EventHandler(this.Musicfile_CheckedChanged);
             // 
             // menuStrip1
             // 
@@ -434,7 +434,6 @@
         private System.Windows.Forms.TextBox Musicfilekakutyou;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label tate;
-        private System.Windows.Forms.TextBox insuutextbox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox IDdelete;
@@ -447,6 +446,7 @@
         private System.Windows.Forms.ToolStripMenuItem youTubedlVersionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem youTubedl更新ToolStripMenuItem;
         public System.Windows.Forms.Label parcetext;
+        private System.Windows.Forms.Button cmdbutton;
     }
 }
 
