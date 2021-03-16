@@ -144,6 +144,7 @@ namespace youtubedown2
 
             Console.WriteLine("ログ: " + output);
 
+            proc.Close();
             proc.Dispose();
 
             MessageBox.Show("現在のバージョンは" + output + "です。", "完了", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -172,6 +173,7 @@ namespace youtubedown2
 
             Console.WriteLine("ログ: " + output);
 
+            proc.Close();
             proc.Dispose();
 
             return output;
