@@ -1387,20 +1387,21 @@ namespace youtubedown2
 
         private void fileselect_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
-            openFileDialog1.FileName = "Folder Selection";
-            openFileDialog1.Filter = "フォルダー|.";
-            openFileDialog1.ValidateNames = false;
-            openFileDialog1.CheckFileExists = false;
-            openFileDialog1.CheckPathExists = true;
-
-            using (OpenFileDialog openFileDialog2 = openFileDialog1)
+            using (OpenFileDialog openFileDialog1 = new OpenFileDialog())
             {
-                if (openFileDialog2.ShowDialog() == DialogResult.OK)
+                openFileDialog1.FileName = "Folder Selection";
+                openFileDialog1.Filter = "フォルダー|.";
+                openFileDialog1.ValidateNames = false;
+                openFileDialog1.CheckFileExists = false;
+                openFileDialog1.CheckPathExists = true;
+
+                using (OpenFileDialog openFileDialog2 = openFileDialog1)
                 {
-                    filepath.Text = Path.GetDirectoryName(openFileDialog2.FileName);
-                    selectfilepath = Path.GetDirectoryName(openFileDialog2.FileName);
+                    if (openFileDialog2.ShowDialog() == DialogResult.OK)
+                    {
+                        filepath.Text = Path.GetDirectoryName(openFileDialog2.FileName);
+                        selectfilepath = Path.GetDirectoryName(openFileDialog2.FileName);
+                    }
                 }
             }
 
@@ -1680,6 +1681,7 @@ namespace youtubedown2
         private void cmdbutton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("コマンドプロンプト起動");
+
             Logic logic = new Logic();
             logic.Cmd();
         }
