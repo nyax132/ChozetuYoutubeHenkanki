@@ -114,8 +114,11 @@ namespace youtubedown2
                     YouTubeApp.is_executing = false;
                     Console.WriteLine(e);
                 }
+                finally
+                {
+                    Console.WriteLine("--DLupdate End--");
+                }
             });
-
         }
 
         /// <summary>
@@ -141,6 +144,7 @@ namespace youtubedown2
 
             Console.WriteLine("ログ: " + output);
 
+            proc.Close();
             proc.Dispose();
 
             MessageBox.Show("現在のバージョンは" + output + "です。", "完了", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -169,6 +173,7 @@ namespace youtubedown2
 
             Console.WriteLine("ログ: " + output);
 
+            proc.Close();
             proc.Dispose();
 
             return output;
@@ -178,6 +183,21 @@ namespace youtubedown2
         {
             string path = System.Windows.Forms.Application.StartupPath;
             return path;
+        }
+
+        /// <summary>
+        /// コマンドプロンプトをSystemFolderPathのディレクトリで起動
+        /// </summary>
+        public void Cmd()
+        {
+            using (Process p = new Process())
+            {
+                p.StartInfo.FileName = "cmd.exe";
+                p.StartInfo.WorkingDirectory = YouTubeApp.SystemFolderPath;
+                p.StartInfo.CreateNoWindow = false;
+
+                p.Start();
+            }
         }
     }
 }

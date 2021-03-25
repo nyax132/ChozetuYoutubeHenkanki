@@ -1387,20 +1387,21 @@ namespace youtubedown2
 
         private void fileselect_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
-            openFileDialog1.FileName = "Folder Selection";
-            openFileDialog1.Filter = "フォルダー|.";
-            openFileDialog1.ValidateNames = false;
-            openFileDialog1.CheckFileExists = false;
-            openFileDialog1.CheckPathExists = true;
-
-            using (OpenFileDialog openFileDialog2 = openFileDialog1)
+            using (OpenFileDialog openFileDialog1 = new OpenFileDialog())
             {
-                if (openFileDialog2.ShowDialog() == DialogResult.OK)
+                openFileDialog1.FileName = "Folder Selection";
+                openFileDialog1.Filter = "フォルダー|.";
+                openFileDialog1.ValidateNames = false;
+                openFileDialog1.CheckFileExists = false;
+                openFileDialog1.CheckPathExists = true;
+
+                using (OpenFileDialog openFileDialog2 = openFileDialog1)
                 {
-                    filepath.Text = Path.GetDirectoryName(openFileDialog2.FileName);
-                    selectfilepath = Path.GetDirectoryName(openFileDialog2.FileName);
+                    if (openFileDialog2.ShowDialog() == DialogResult.OK)
+                    {
+                        filepath.Text = Path.GetDirectoryName(openFileDialog2.FileName);
+                        selectfilepath = Path.GetDirectoryName(openFileDialog2.FileName);
+                    }
                 }
             }
 
@@ -1504,16 +1505,6 @@ namespace youtubedown2
 
                 Musicfile.Checked = true;
             }
-        }
-
-        private void Musicfile_CheckedChanged(object sender, EventArgs e)
-        {
-            insuutextbox.Text = "youtube-dl -x --audio-format --newline";
-        }
-
-        private void Moviefile_CheckedChanged(object sender, EventArgs e)
-        {
-            insuutextbox.Text = "youtube-dl -f bestvideo[ext=mp4]+bestaudio[ext=m4a] --merge-output --newline";
         }
 
         private void urlinput_TextChanged(object sender, EventArgs e)
@@ -1664,7 +1655,6 @@ namespace youtubedown2
         {
             Logic logic = new Logic();
             logic.DLupdate();
-
         }
 
         private void iToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1687,6 +1677,13 @@ namespace youtubedown2
             {
                 TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.NoProgress);
             }
+        }
+        private void cmdbutton_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("コマンドプロンプト起動");
+
+            Logic logic = new Logic();
+            logic.Cmd();
         }
     }
 }
