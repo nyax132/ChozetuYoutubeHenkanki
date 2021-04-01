@@ -179,12 +179,6 @@ namespace youtubedown2
             return output;
         }
 
-        public string GetAppPath()
-        {
-            string path = System.Windows.Forms.Application.StartupPath;
-            return path;
-        }
-
         /// <summary>
         /// コマンドプロンプトをSystemFolderPathのディレクトリで起動
         /// </summary>
@@ -199,5 +193,6 @@ namespace youtubedown2
                 p.Start();
             }
         }
+        public string GetAppPath() => Application.StartupPath;
     }
 }
