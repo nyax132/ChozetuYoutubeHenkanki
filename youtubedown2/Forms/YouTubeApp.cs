@@ -113,14 +113,12 @@ namespace youtubedown2
                 return;
             }
 
+
             if (IDdelete.Checked)
-            {
                 IDdeletecheck = true;
-            }
             else
-            {
                 IDdeletecheck = false;
-            }
+
 
             if (is_executing == true)
             {
@@ -129,10 +127,7 @@ namespace youtubedown2
             }
 
             if (error == true)
-            {
                 MessageBox.Show("直下ファイルに動画や音声が検出されています。エラーが発生する可能性があります。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
 
             if (selectcheck == false)
             {
@@ -1242,13 +1237,13 @@ namespace youtubedown2
                         int fileLen = filename.Length;
                         int fileLenEnd = fileLen - Amo;
                         String fileLenName = filename.Substring(0, fileLenEnd);
-                        System.IO.File.Move(str, selectfilepath + @"\" + fileLenName + kakutyouNormal);
+                        File.Move(str, selectfilepath + @"\" + fileLenName + kakutyouNormal);
                         Console.WriteLine(str + " を移動します。 ファイル名は " + filename.Substring(0, fileLenEnd) + kakutyouNormal + " です。");
                     }
 
                     if (IDdeletecheck == false) //IDを消さない
                     {
-                        System.IO.File.Move(str, selectfilepath + @"\" + filename + kakutyouNormal);
+                        File.Move(str, selectfilepath + @"\" + filename + kakutyouNormal);
                         Console.WriteLine(str + " を移動します。 ファイル名は " + filename + " です。");
                     }
                 }
@@ -1284,7 +1279,7 @@ namespace youtubedown2
         public static void Filemovement(String youtubeid, String kakutyou)
         {
             System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(SystemFolderPath);
-            System.IO.FileInfo[] files = di.GetFiles(kakutyou, System.IO.SearchOption.TopDirectoryOnly);
+            System.IO.FileInfo[] files = di.GetFiles(kakutyou, SearchOption.TopDirectoryOnly);
 
             //Console.WriteLine(files[0]);
 
@@ -1298,17 +1293,16 @@ namespace youtubedown2
                     Console.WriteLine("selectFilePath :" + selectfilepath);
                     Console.WriteLine("filename :" + filename);
 
-                    if (IDdeletecheck == true)
+                    if (IDdeletecheck)
                     {
                         filenameR = filename.Replace("-" + youtubeid, "");
                         Console.WriteLine("filenameR :" + filenameR);
 
-                        System.IO.File.Move(SystemFolderPath + filename, selectfilepath + @"\" + filenameR); // 移動 （IDなし
+                        File.Move(SystemFolderPath + filename, selectfilepath + @"\" + filenameR); // 移動 （IDなし
                     }
-
-                    if (IDdeletecheck == false)
+                    else
                     {
-                        System.IO.File.Move(SystemFolderPath + filename, selectfilepath + @"\" + filename); // 移動 （IDあり
+                        File.Move(SystemFolderPath + filename, selectfilepath + @"\" + filename); // 移動 （IDあり
                     }
 
                     Taskbar(false);
@@ -1354,10 +1348,7 @@ namespace youtubedown2
         {
             string[] files = Directory.GetFiles(SystemFolderPath, kakutyou);
 
-            if (files.Length == 0)
-            {
-                return;
-            }
+            if (files.Length == 0) return;
 
             foreach (string str in files)
             {
@@ -1368,18 +1359,18 @@ namespace youtubedown2
                     int fileLen = filename.Length;
                     int fileLenEnd = fileLen - Amo;
                     String fileLenName = filename.Substring(0, fileLenEnd);
-                    System.IO.File.Move(str, selectfilepath + @"\" + fileLenName + kakutyouNormal);
+                    File.Move(str, selectfilepath + @"\" + fileLenName + kakutyouNormal);
                     Console.WriteLine(str + " を移動します。 ファイル名は " + filename.Substring(0, fileLenEnd) + kakutyouNormal + " です。");
                 }
                 else
                 {
-                    System.IO.File.Move(str, selectfilepath + @"\" + filename + kakutyouNormal);
+                    File.Move(str, selectfilepath + @"\" + filename + kakutyouNormal);
                     Console.WriteLine(str + " を移動します。 ファイル名は " + filename + " です。");
                 }
 
                 if (IDdeletecheck == false && youtube == false) //IDを消さない
                 {
-                    System.IO.File.Move(str, selectfilepath + @"\" + filename + kakutyouNormal);
+                    File.Move(str, selectfilepath + @"\" + filename + kakutyouNormal);
                     Console.WriteLine(str + " を移動します。 ファイル名は " + filename + " です。");
                 }
             }
@@ -1389,7 +1380,7 @@ namespace youtubedown2
         {
             using (OpenFileDialog openFileDialog1 = new OpenFileDialog())
             {
-                openFileDialog1.FileName = "Folder Selection";
+                openFileDialog1.FileName = "フォルダ選択";
                 openFileDialog1.Filter = "フォルダー|.";
                 openFileDialog1.ValidateNames = false;
                 openFileDialog1.CheckFileExists = false;
@@ -1440,7 +1431,7 @@ namespace youtubedown2
                     {
 
                         System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(SystemFolderPath);
-                        System.IO.FileInfo[] files = di.GetFiles("*.mp3", System.IO.SearchOption.TopDirectoryOnly);
+                        System.IO.FileInfo[] files = di.GetFiles("*.mp3", SearchOption.TopDirectoryOnly);
                         if (files.Length != 0)
                         {
 
@@ -1456,7 +1447,7 @@ namespace youtubedown2
                             setup = true;
 
                             Thread.Sleep(1000);
-                            System.IO.File.Delete(SystemFolderPath + filename);
+                            File.Delete(SystemFolderPath + filename);
                             MessageBox.Show("コマンドプロンプトを閉じてください", "終了", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             Console.WriteLine("-END-");
                         }
@@ -1615,11 +1606,7 @@ namespace youtubedown2
 
         private void text_converting_activation_CheckedChanged(object sender, EventArgs e) //テキストで変換チェック外した時
         {
-            if (text_converting_activation.Checked)
-            {
-
-            }
-            else
+            if (!text_converting_activation.Checked)
             {
                 //テキストモード
                 urlinput.ReadOnly = false;

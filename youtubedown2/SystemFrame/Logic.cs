@@ -24,6 +24,7 @@ namespace youtubedown2
                 Console.WriteLine("Youtube-dl not");
                 MessageBox.Show("Youtube-dl.exe が見つかりませんでした", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+
                 Application.Exit();
                 return;
             }
