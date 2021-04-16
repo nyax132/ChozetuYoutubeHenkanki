@@ -20,7 +20,6 @@ namespace youtubedown2
         static String selectfilepath;
         public static bool is_executing = false;
         bool selectcheck;
-        public bool error = false;
         static bool IDdeletecheck = false;
         static bool playlist_download_activation = false;
 
@@ -113,7 +112,6 @@ namespace youtubedown2
                 return;
             }
 
-
             if (IDdelete.Checked)
                 IDdeletecheck = true;
             else
@@ -125,9 +123,6 @@ namespace youtubedown2
                 MessageBox.Show("実行中です", "情報", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            if (error == true)
-                MessageBox.Show("直下ファイルに動画や音声が検出されています。エラーが発生する可能性があります。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             if (selectcheck == false)
             {
