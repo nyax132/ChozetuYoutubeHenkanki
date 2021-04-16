@@ -59,16 +59,18 @@ namespace youtubedown2
 
         private void atosentaku_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog fbDialog = new FolderBrowserDialog();
+            FolderBrowserDialog fbDialog = new FolderBrowserDialog
+            {
 
-            // ダイアログの説明文を指定する
-            fbDialog.Description = "変換後のファイルを出力する場所を指定してください";
+                // ダイアログの説明文を指定する
+                Description = "変換後のファイルを出力する場所を指定してください",
 
-            // デフォルトのフォルダを指定する
-            fbDialog.SelectedPath = @"C:";
+                // デフォルトのフォルダを指定する
+                SelectedPath = @"C:",
 
-            // 「新しいフォルダーの作成する」ボタンを表示する
-            fbDialog.ShowNewFolderButton = true;
+                // 「新しいフォルダーの作成する」ボタンを表示する
+                ShowNewFolderButton = true
+            };
 
             //フォルダを選択するダイアログを表示する
             if (fbDialog.ShowDialog() == DialogResult.OK)
@@ -90,13 +92,15 @@ namespace youtubedown2
 
         private void motosentaku_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofDialog = new OpenFileDialog();
+            OpenFileDialog ofDialog = new OpenFileDialog
+            {
 
-            // デフォルトのフォルダを指定する
-            ofDialog.InitialDirectory = @"C:Desktop";
+                // デフォルトのフォルダを指定する
+                InitialDirectory = @"C:Desktop",
 
-            //ダイアログのタイトルを指定する
-            ofDialog.Title = "変換前のファイルを選択してください。";
+                //ダイアログのタイトルを指定する
+                Title = "変換前のファイルを選択してください。"
+            };
 
             //ダイアログを表示する
             if (ofDialog.ShowDialog() == DialogResult.OK)

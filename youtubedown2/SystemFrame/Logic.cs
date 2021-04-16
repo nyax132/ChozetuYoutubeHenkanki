@@ -24,6 +24,7 @@ namespace youtubedown2
                 Console.WriteLine("Youtube-dl not");
                 MessageBox.Show("Youtube-dl.exe が見つかりませんでした", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+
                 Application.Exit();
                 return;
             }
@@ -179,12 +180,6 @@ namespace youtubedown2
             return output;
         }
 
-        public string GetAppPath()
-        {
-            string path = System.Windows.Forms.Application.StartupPath;
-            return path;
-        }
-
         /// <summary>
         /// コマンドプロンプトをSystemFolderPathのディレクトリで起動
         /// </summary>
@@ -199,5 +194,6 @@ namespace youtubedown2
                 p.Start();
             }
         }
+        public string GetAppPath() => Application.StartupPath;
     }
 }
