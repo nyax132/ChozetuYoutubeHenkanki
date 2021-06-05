@@ -399,7 +399,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "YouTubeApp";
-            this.Text = "超絶ようつべ変換機4.3";
+            this.Text = "超絶ようつべ変換機4.4";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
